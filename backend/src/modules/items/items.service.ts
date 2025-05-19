@@ -11,15 +11,16 @@ export class ItemsService {
 		return this.itemsRepository.getSeasonalItems();
 	}
 
-	async getSimilarProducts(id: number): Promise<Item[]> {
-		return this.itemsRepository.getSimilarProducts(id);
+	async getSimilarProducts(): Promise<Item[]> {
+		const randomItem = await this.getRandomItem();
+		return this.itemsRepository.getSimilarProducts(randomItem?.id ?? 10);
 	}
 
 	async getRandomLocalizedItems(): Promise<LocalizationItemsInterface[]> {
 		return this.itemsRepository.getRandomLocalizedItems();
 	}
 
-	async getRandomItem(): Promise<Item | null> {
+	private async getRandomItem(): Promise<Item | null> {
 		return this.itemsRepository.getRandomItem();
 	}
 }
