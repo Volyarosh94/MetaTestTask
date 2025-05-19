@@ -55,7 +55,7 @@ npm run start:dev # or yarn start:dev
 ```
 
 ### Open the Frontend
-Open the index.html file in your browser to test the API via the UI with 4 buttons.
+Open the index.html file in your browser to test the API via the UI with 3 buttons.
 
 
 

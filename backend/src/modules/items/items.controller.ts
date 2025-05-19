@@ -12,11 +12,6 @@ export class ItemsController {
 		return this.itemsService.getSeasonalItems();
 	}
 
-	@Get(':id/similar')
-	getSimilarProducts(@Param('id')id: number):Promise<Item[]> {
-		return this.itemsService.getSimilarProducts(id);
-	}
-
 	@Get('similar')
 	async getRandomSimilarProducts():Promise<Item[]> {
 		const randomItem = await this.itemsService.getRandomItem();
