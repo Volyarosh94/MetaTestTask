@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Items API Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+    }
+    pre {
+      background-color: #f3f3f3;
+      padding: 10px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Test Items Endpoints</h1>
+
+<button onclick="callApi('http://localhost:3000/api/items/seasonal')">Get Seasonal Items</button>
+<button onclick="callApi('http://localhost:3000/api/items/10/similar')">Get Similar Items (id: 10)</button>
+<button onclick="callApi('http://localhost:3000/api/items/similar')">Get Similar Items (Random)</button>
+<button onclick="callApi('http://localhost:3000/api/items/random')">Get Random Localized Items</button>
+
+<h2>Response:</h2>
+<pre id="output">Click a button to fetch data...</pre>
+
+<script>
+  async function callApi(endpoint) {
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+      document.getElementById('output').textContent = 'Error: ' + error;
+    }
+  }
+</script>
+
+</body>
+</html>
